@@ -1,0 +1,16 @@
+version: '2'
+services:
+    contractcloud-mongodb:
+        image: mongo:3.2.10
+        ports:
+            - "27017:27017"
+        command: mongos --configdb contractcloud-mongodb-config
+    contractcloud-mongodb-node:
+        build:
+            context: .
+            dockerfile: mongodb/MongoDB.Dockerfile
+        command: mongod --replSet rs1 --noprealloc --smallfiles
+    contractcloud-mongodb-config:
+        image: mongo:3.2.10
+        container_name: contractcloud-mongodb-config
+        command: mongod --noprealloc --smallfiles --configsvr --dbpath /data/db
