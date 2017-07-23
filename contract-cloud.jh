@@ -1,0 +1,38 @@
+enum ContratStatus	{
+	NEGOCIATION, SIGNED, INEFFECT, FINISHED
+}
+
+entity Signature {
+	sign_by String required,
+    sign_date ZonedDateTime,
+}
+
+entity Comment {
+	author String,
+    mail String,
+    comment String
+}
+
+entity Discussion {
+ contract_id String required,
+}
+
+
+entity Contract	{
+	title String required,
+    description TextBlob,
+    status ContratStatus
+}
+
+/**
+relationship OneToOne {
+  Contract{sihnature_A} to Signature,
+  Contract{sihnature_B} to Signature
+}
+
+relationship OneToMany {
+	Contract{discussions} to Discussion,
+    Discussion{comments} to Comment
+}
+**/
+

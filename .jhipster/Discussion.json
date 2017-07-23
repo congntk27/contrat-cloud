@@ -1,0 +1,18 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "contractid",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170723080809",
+    "entityTableName": "discussion",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

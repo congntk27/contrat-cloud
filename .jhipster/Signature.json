@@ -1,0 +1,22 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "signby",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "signdate",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170723080807",
+    "entityTableName": "signature",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

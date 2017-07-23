@@ -1,0 +1,11 @@
+{
+    "contractcloudApp": {
+        "ContratStatus" : {
+            "null": "",
+            "NEGOCIATION": "NEGOCIATION",
+            "SIGNED": "SIGNED",
+            "INEFFECT": "INEFFECT",
+            "FINISHED": "FINISHED"
+        }
+    }
+}

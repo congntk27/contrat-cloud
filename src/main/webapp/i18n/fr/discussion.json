@@ -1,0 +1,21 @@
+{
+    "contractcloudApp": {
+        "discussion" : {
+            "home": {
+                "title": "Discussions",
+                "createLabel": "Créer un nouveau Discussion",
+                "createOrEditLabel": "Créer ou éditer un Discussion"
+            },
+            "created": "Un nouveau Discussion a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Discussion avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Discussion avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Discussion {{ id }} ?"
+            },
+            "detail": {
+                "title": "Discussion"
+            },
+            "contractid": "Contractid"
+        }
+    }
+}
