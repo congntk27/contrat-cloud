@@ -1,75 +1,74 @@
 package com.contractcloud.domain;
 
+import java.io.Serializable;
+
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
-import javax.validation.constraints.*;
-import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * A Discussion.
  */
 
 @Document(collection = "discussion")
-public class Discussion implements Serializable {
+public class Discussion implements Serializable
+{
 
-    private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-    @Id
-    private String id;
+	@Id
+	private String				id;
 
-    @NotNull
-    @Field("contractid")
-    private String contractid;
+	@NotNull
+	@Field("contract_id")
+	private String				contractId;
 
-    public String getId() {
-        return id;
-    }
+	@Field("comments")
+	private Comment[]			comments;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public String getId()
+	{
+		return id;
+	}
 
-    public String getContractid() {
-        return contractid;
-    }
+	public void setId(String id)
+	{
+		this.id = id;
+	}
 
-    public Discussion contractid(String contractid) {
-        this.contractid = contractid;
-        return this;
-    }
+	public String getContractId()
+	{
+		return contractId;
+	}
 
-    public void setContractid(String contractid) {
-        this.contractid = contractid;
-    }
+	public Discussion contractid(String contractid)
+	{
+		this.contractId = contractid;
+		return this;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Discussion discussion = (Discussion) o;
-        if (discussion.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), discussion.getId());
-    }
+	public void setContractId(String contractid)
+	{
+		this.contractId = contractid;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
+	public Comment[] getComments()
+	{
+		return comments;
+	}
 
-    @Override
-    public String toString() {
-        return "Discussion{" +
-            "id=" + getId() +
-            ", contractid='" + getContractid() + "'" +
-            "}";
-    }
+	public void setComments(Comment[] comments)
+	{
+		this.comments = comments;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Discussion{" +
+				", contractid='" + getContractId() + "'" +
+				"}";
+	}
 }

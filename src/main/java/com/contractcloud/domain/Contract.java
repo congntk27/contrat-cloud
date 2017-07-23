@@ -1,12 +1,13 @@
 package com.contractcloud.domain;
 
+import java.io.Serializable;
+import java.util.Objects;
+
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
-import javax.validation.constraints.*;
-import java.io.Serializable;
-import java.util.Objects;
 
 import com.contractcloud.domain.enumeration.ContratStatus;
 
@@ -15,97 +16,154 @@ import com.contractcloud.domain.enumeration.ContratStatus;
  */
 
 @Document(collection = "contract")
-public class Contract implements Serializable {
+public class Contract implements Serializable
+{
 
-    private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-    @Id
-    private String id;
+	@Id
+	private String				id;
 
-    @NotNull
-    @Field("title")
-    private String title;
+	@NotNull
+	@Field("title")
+	private String				title;
 
-    @Field("description")
-    private String description;
+	@Field("description")
+	private String				description;
 
-    @Field("status")
-    private ContratStatus status;
+	@Field("signature_A")
+	private Signature			signatureA;
 
-    public String getId() {
-        return id;
-    }
+	@Field("signature_B")
+	private Signature			signatureB;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	@Field("status")
+	private ContratStatus		status;
 
-    public String getTitle() {
-        return title;
-    }
+	@Field("discussions")
+	private Discussion[]		discussions;
 
-    public Contract title(String title) {
-        this.title = title;
-        return this;
-    }
+	public String getId()
+	{
+		return id;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public void setId(String id)
+	{
+		this.id = id;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public String getTitle()
+	{
+		return title;
+	}
 
-    public Contract description(String description) {
-        this.description = description;
-        return this;
-    }
+	public Contract title(String title)
+	{
+		this.title = title;
+		return this;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setTitle(String title)
+	{
+		this.title = title;
+	}
 
-    public ContratStatus getStatus() {
-        return status;
-    }
+	public String getDescription()
+	{
+		return description;
+	}
 
-    public Contract status(ContratStatus status) {
-        this.status = status;
-        return this;
-    }
+	public Contract description(String description)
+	{
+		this.description = description;
+		return this;
+	}
 
-    public void setStatus(ContratStatus status) {
-        this.status = status;
-    }
+	public void setDescription(String description)
+	{
+		this.description = description;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Contract contract = (Contract) o;
-        if (contract.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), contract.getId());
-    }
+	public ContratStatus getStatus()
+	{
+		return status;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
+	public Contract status(ContratStatus status)
+	{
+		this.status = status;
+		return this;
+	}
 
-    @Override
-    public String toString() {
-        return "Contract{" +
-            "id=" + getId() +
-            ", title='" + getTitle() + "'" +
-            ", description='" + getDescription() + "'" +
-            ", status='" + getStatus() + "'" +
-            "}";
-    }
+	public void setStatus(ContratStatus status)
+	{
+		this.status = status;
+	}
+
+	public Signature getSignatureA()
+	{
+		return signatureA;
+	}
+
+	public void setSignatureA(Signature signatureA)
+	{
+		this.signatureA = signatureA;
+	}
+
+	public Signature getSignatureB()
+	{
+		return signatureB;
+	}
+
+	public void setSignatureB(Signature signatureB)
+	{
+		this.signatureB = signatureB;
+	}
+
+	public Discussion[] getDiscussions()
+	{
+		return discussions;
+	}
+
+	public void setDiscussions(Discussion[] discussions)
+	{
+		this.discussions = discussions;
+	}
+
+	@Override
+	public boolean equals(Object o)
+	{
+		if (this == o)
+		{
+			return true;
+		}
+		if (o == null || getClass() != o.getClass())
+		{
+			return false;
+		}
+		Contract contract = (Contract) o;
+		if (contract.getId() == null || getId() == null)
+		{
+			return false;
+		}
+		return Objects.equals(getId(), contract.getId());
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return Objects.hashCode(getId());
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Contract{" +
+				"id=" + getId() +
+				", title='" + getTitle() + "'" +
+				", description='" + getDescription() + "'" +
+				", status='" + getStatus() + "'" +
+				"}";
+	}
 }
