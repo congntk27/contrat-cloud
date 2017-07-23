@@ -1,0 +1,52 @@
+<div>
+  <div class="panel panel-primary" >
+    <div class="panel-heading" style="padding:0 0 0 8px;">
+      <span class="glyphicon glyphicon-user"></span>
+      <h6 class="panel-title" style="display:inline;">Chat</h6>
+      <div class="btn-group btn-group-xs pull-right">
+        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-lock"></span></button>
+        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span></button>
+        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-remove"></span></button>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="panel-body" style="padding:0 4px;">
+      <div class="row">
+        <div class="col-xs-12" style="max-height:300px;max-width:100%;overflow-y:auto;overflow-x:hidden;">
+          <table class="table table-hover table-condensed" style="">
+            <tr ng-hide="chatView.discussion.comments.length === 0" ng-repeat="chat in chatView.discussion.comments"
+                style="min-width:100%;max-width:100%;width:100%;">
+              <td>
+              	<span class="glyphicon glyphicon-user" style="margin-top:8px;"></span>
+              </td>
+              <td>
+                <h6>{{chat.author}}</h6>
+              </td>
+              <td>
+              <p class="word-wrap:break-word"><small>{{chat.comment}}</small></p>
+              </td>
+            </tr>
+            <tr ng-show="chatView.discussion.comments.length === 0">
+              <td>
+                <p>Nothin' here. <strong>Say something!</strong></p>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <form>
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user"></span>
+          </span>
+          <input type="text" class="form-control" ng-model="chatView.newChatMsg" placeholder="..."/>
+          <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit" ng-click="chatView.send()">Send</button>
+          </span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>         

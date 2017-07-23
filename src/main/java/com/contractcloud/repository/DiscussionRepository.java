@@ -1,15 +1,22 @@
 package com.contractcloud.repository;
 
-import com.contractcloud.domain.Discussion;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import com.contractcloud.domain.Discussion;
 
 /**
  * Spring Data MongoDB repository for the Discussion entity.
  */
 @SuppressWarnings("unused")
 @Repository
-public interface DiscussionRepository extends MongoRepository<Discussion,String> {
+public interface DiscussionRepository extends MongoRepository<Discussion, String>
+{
+
+	/**
+	 * @param contractId
+	 * @return
+	 */
+	Discussion findOneByContractId(String contractId);
 
 }

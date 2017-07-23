@@ -5,9 +5,9 @@
         .module('contractcloudApp')
         .controller('ContractDialogController', ContractDialogController);
 
-    ContractDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Contract'];
+    ContractDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'DataUtils', 'entity', 'Contract', 'Discussion'];
 
-    function ContractDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Contract) {
+    function ContractDialogController ($timeout, $scope, $stateParams, $uibModalInstance, DataUtils, entity, Contract, Discussion) {
         var vm = this;
 
         vm.contract = entity;
@@ -34,6 +34,7 @@
         }
 
         function onSaveSuccess (result) {
+        	Discussion.save({contractId: result.id});
             $scope.$emit('contractcloudApp:contractUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
