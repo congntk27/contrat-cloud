@@ -22,6 +22,10 @@
                 }
             },
             resolve: {
+            	translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+            		$translatePartialLoader.addPart('contract');
+                    return $translate.refresh();
+                }],
             	contract: ['$stateParams', 'Contract', function($stateParams, Contract) {
                     return Contract.get({id : $stateParams.contractId}).$promise;
                 }]
