@@ -12,29 +12,36 @@
     });
 
     /////////////////////////////////
-    componentController.$inject =[];
-    function componentController(){
+    componentController.$inject =['$http'];
+    function componentController($http){
 
         var suggestionPanel = this;
+        suggestionPanel.categories;
+        
+    	var prevDescription = null;
 
-        suggestionPanel.$onInit = onInit;
-        suggestionPanel.$onDestroy = onDestroy;
+        suggestionPanel.$onChanges = onChanges;
 
-        return;
+        //return;
 
 		/////////////////////////////////
         //controller implementation detail
-        /////////////////////////////////
+        /////////////////////////////////    
 
-        function onInit() {
-    	  			
-    	
-       }
         
-        
-        function onDestroy() {
+        function onChanges() {
+        	var description = suggestionPanel.contract.description;
+        	if(prevDescription != description){
+        		prevDescription = description;
+        		
+            	$http.get('/api/category',{params: {description: description}}).then(function(response){
+            		suggestionPanel.categories = response.data.category_list;
+            	}, function(error){
 
+            	});
+        	}
+        	
         };
-       
+        
     }
 })();
